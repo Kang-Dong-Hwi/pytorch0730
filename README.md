@@ -31,10 +31,13 @@ def dB( magnitude ):
 
 def scaler( L, R):
     LR = np.concatenate( (L,R), axis=0 )
+    
+    """normalization"""
     #z = MinMaxScaler().fit_transform(LR[:])
     z = StandardScaler().fit_transform(LR[:])
     #z = RobustScaler().fit_transform(LR[:])
     #z = MaxAbsScaler().fit_transform(LR[:])
+    
     z = z.reshape(2, 257, 382)
     return z[0], z[1]
 ~~~
@@ -72,11 +75,6 @@ def Phase_normalization( phase ):
 
 
 ### Screenshots
--------
-log scale변환, 정규화에 따른 결과입니다.
-
-
-
 -------
 epoch=100<br>
 batch_size=20<br>
